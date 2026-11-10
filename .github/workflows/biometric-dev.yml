@@ -38,6 +38,9 @@ jobs:
 
       - name: Instalar dependencias
         run: npm ci
+      
+      - name: Ejecutar ESLint
+        run: npm run lint
 
       - name: Ejecutar pruebas
         run: npm test -- --runInBand
