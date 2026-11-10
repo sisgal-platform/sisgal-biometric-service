@@ -1,3 +1,4 @@
+
 name: Biometric dev pipeline
 
 on:
@@ -27,11 +28,19 @@ jobs:
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 24.13.0
           cache: npm
+
+      - name: Verificar versiones
+        run: |
+          node --version
+          npm --version
 
       - name: Instalar dependencias
         run: npm ci
+      
+      - name: Ejecutar ESLint
+        run: npm run lint
 
       - name: Ejecutar pruebas
         run: npm test -- --runInBand
